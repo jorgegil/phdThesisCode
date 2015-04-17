@@ -1,0 +1,645 @@
+----------------------------------
+-- LOCAL CATCHMENT AREA -- (redo only for relevant named postcodes)
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_catchment_area.R car metric all
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_catchment_area.R nonmotor metric all
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_catchment_area.R private metric all
+
+* Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_catchment_area.R car axial named
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_catchment_area.R nonmotor axial named
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_catchment_area.R car cumangular all
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_catchment_area.R nonmotor cumangular named
+
+* Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_catchment_area.R private temporal all
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_catchment_area.R car temporal all
+
+* Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_catchment_area.R nonmotor temporal_ped named
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_catchment_area.R nonmotor temporal_bike named
+
+* Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_catchment_area.R car continuity_v2 named
+
+* Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_catchment_area.R nonmotor continuity_v2 named
+
+* Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_catchment_area.R car segment named
+
+* Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_catchment_area.R nonmotor segment named
+
+
+----------------------------------
+-- MULTIMODAL CATCHMENT AREA --
+
+R --args all "temporal,cogn_angular_seg,cogn_axial_seg+0.000001 cogn_axial_seg,segment+transfer segment,cogn_angular_mix_seg+0.000001 cogn_angular_mix_seg,cogn_axial_mix_seg+0.000001 cogn_axial_mix_seg" "1074"
+
+source'(~/Dropbox/PhD/Thesis_work/code/graphs/postcode_multimodal_catchment_area.R')
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_multimodal_catchment_area.R nonmotor "temporal_ped,temporal_bike" "1074"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_multimodal_catchment_area.R car temporal "1074"
+
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_multimodal_catchment_area.R all cogn_angular_seg "all"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_multimodal_catchment_area.R all "cogn_axial_seg+0.000001 cogn_axial_seg" "all"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_multimodal_catchment_area.R all "segment+transfer segment" "all"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_multimodal_catchment_area.R all "cogn_angular_mix_seg+0.000001 cogn_angular_mix_seg" "all"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_multimodal_catchment_area.R all "cogn_axial_mix_seg+0.000001 cogn_axial_mix_seg" "all"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_multimodal_catchment_area.R all temporal "all"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_multimodal_catchment_area.R nonmotor temporal_ped "all"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_multimodal_catchment_area.R nonmotor temporal_bike "all"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/postcode_multimodal_catchment_area.R car temporal "all"
+
+
+---------------------------------
+-- MODALITY ENVIRONMENTS --
+-- These can be too slow. Best to run only the relevant metric, one at a time.
+-- Still need to decide on the ideal size of the parts for the fastest analysis
+
+R --args 100 main "metric,cumangular,axial,continuity_v2,segment,temporal"
+
+R --args 100 motorway "metric,cumangular,axial,continuity_v2,segment,temporal"
+
+source('~/Dropbox/PhD/Thesis_work/code/modality_environment/modality_environment_car_loop_v5.R')
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/modality_environment_car_loop_v5.R 500 motorway metric
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/modality_environment_car_loop_v5.R 500 motorway cumangular
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/modality_environment_car_loop_v5.R 500 main metric
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/modality_environment_transit_loop_v5.R 50 rail "metric,cumangular,axial,continuity_v2,segment,temporal"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/modality_environment_transit_loop_v5.R 50 metro "metric,cumangular,axial,continuity_v2,segment,temporal"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/modality_environment_transit_loop_v5.R 50 tram "metric,cumangular,axial,continuity_v2,segment,temporal"
+
+* Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/modality_environment_transit_loop_v5.R 500 bus metric
+
+* Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/modality_environment_transit_loop_v5.R 100 bus cumangular
+
+* Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/modality_environment_transit_loop_v5.R 100 bus axial
+
+
+---------------------------------
+-- LOCAL PROXIMITY
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_proximity.R car "metric,axial,cumangular,continuity_v2,segment,temporal" "motorway,main"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_proximity.R nonmotor "metric,axial,cumangular,continuity_v2,segment,temporal_ped,temporal_bike" "pedestrian,bicycle,rail,metro,tram,bus"
+
+
+---------------------------------
+-- LOCAL DENSITY
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_density.R car metric "400,800,1600,2400,3600" "xcross,tcross,culdesac,motorway,main,car"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_density.R nonmotor metric "400,800,1600,2400,3600" "pedestrian,bicycle,nonmotor,rail,metro,tram,bus"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_density.R car axial "1,2,3,4,5" "xcross,tcross,culdesac,motorway,main,car"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_density.R nonmotor axial "1,2,3,4,5" "pedestrian,bicycle,nonmotor,rail,metro,tram,bus"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_density.R car cumangular "90,180,270,360,450" "xcross,tcross,culdesac,motorway,main,car"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_density.R nonmotor cumangular "90,180,270,360,450" "pedestrian,bicycle,nonmotor,rail,metro,tram,bus"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_density.R car temporal "2,5,10,15,20,30" "xcross,tcross,culdesac,motorway,main,car"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_density.R nonmotor temporal_ped "2,5,10,15,20,30" "pedestrian,bicycle,nonmotor,rail,metro,tram,bus"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_density.R nonmotor temporal_bike "2,5,10,15,20,30" "pedestrian,bicycle,nonmotor,rail,metro,tram,bus"
+
+
+---------------------------------
+-- LOCAL ACTIVITY DENSITY
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_activitydensity.R car metric "400,800,1600,2400,3600" "retail,education,office,industry,assembly,sports"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_activitydensity.R nonmotor metric "400,800,1600,2400,3600" "retail,education,office,industry,assembly,sports"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_activitydensity.R car axial "1,2,3,4,5" "retail,education,office,industry,assembly,sports"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_activitydensity.R nonmotor axial "1,2,3,4,5" "retail,education,office,industry,assembly,sports"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_activitydensity.R car cumangular "90,180,270,360,450" "retail,education,office,industry,assembly,sports"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_activitydensity.R nonmotor cumangular "90,180,270,360,450" "retail,education,office,industry,assembly,sports"
+
+* Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_activitydensity.R car temporal "2,5,10,15,20,30" "retail,education,office,industry,assembly,sports"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_activitydensity.R nonmotor temporal_ped "2,5,10,15,20,30" "retail,education,office,industry,assembly,sports"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_activitydensity.R nonmotor temporal_bike "2,5,10,15,20,30" "retail,education,office,industry,assembly,sports"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_activitydensity.R nonmotor metric "800,1600" "residential,active,work"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_activitydensity.R nonmotor temporal_ped "10,15,20,30" "active,work"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_activitydensity.R car temporal "10,15,20,30" "active,work"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_activitydensity.R local_transit temporal_ped "10,15,20,30" "active,work"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_activitydensity.R transit temporal_ped "10,15,20,30" "active,work"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_activitydensity.R transit temporal_bike "10,15,20,30" "active,work"
+
+
+---------------------------------
+-- PRIVATE CENTRALITY --
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_private.R car metric
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_private.R car "cumangular angular"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_private.R car "axial+0.000001 axial"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_private.R car "continuity_v2+0.000001 continuity"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_private.R car "segment+0.000001 segment"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_private.R car temporal
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_private.R nonmotor "cumangular angular"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_private.R private "cumangular angular"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_private.R nonmotor temporal
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_private.R private temporal
+
+
+R --args "graph.multimodal_randstad" nonmotor cogn_angular_seg "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "" "" ",temporal" "" "15,30,45,60" centrality "randstad_rail_mm_cogtopo"
+
+system.time(source('/Users/jorge/Dropbox/PhD/Thesis_work/code/graphs/super_centrality_v1.8b.R'))
+
+
+---------------------------------
+-- TRANSIT CENTRALITY --
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_transit.R rail
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_transit.R tram
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_transit.R metro
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_transit.R bus
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_transit.R transit
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_transit.R tracks
+
+
+---------------------------------
+-- MULTIMODAL CENTRALITY --
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R all cogn_angular_seg
+
+** Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R all cogn_angular_temp
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R all "cogn_axial_seg+0.000001 cogn_axial_seg"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R all "cogn_axial_temp+0.000001 cogn_axial_temp"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R all "segment+transfer segment"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R all "cogn_angular_mix_seg+0.000001 cogn_angular_mix_seg"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R all "cogn_angular_mix_temp+0.000001 cogn_angular_mix_temp"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R all "cogn_axial_mix_seg+0.000001 cogn_axial_mix_seg"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R all temporal
+
+** Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R nonmotor temporal_ped
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R nonmotor temporal_bike
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R nonmotor cogn_angular_seg
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R nonmotor cogn_angular_temp
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R nonmotor "cogn_axial_seg+0.000001 cogn_axial_seg"
+
+** Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R car temporal
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R local cogn_angular_seg
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_centrality_multimodal.R local cogn_angular_temp
+
+
+----------------------------------
+-- LOCAL NETWORK CENTRALITY -- (aggregate results)
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_centrality.R car metric "800,1600" private 20 "car,main,motorway"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_centrality.R nonmotor metric "800,1600" private 20 "nonmotor,bicycle"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_centrality.R car metric "800,1600" multimodal 20 "car,main,motorway"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_centrality.R nonmotor metric "800,1600" multimodal 20 "nonmotor,bicycle,rail,localtransit"
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/modality_environment/local_centrality.R nonmotor metric "800,1600" transit 20 "rail,localtransit"
+
+
+----------------------------------
+-- LOCAL NETWORK CENTRALITY -- (closeness only)
+R --args "graph.multimodal_randstad" nonmotor cumangular "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT *, road_sid::text node FROM urbanform.roads_landuse_randstad" interfaces "" "" "" centrality "randstad_nonmotor_interfaces_cogtopo"
+18b- 9026.110
+
+R --args "graph.multimodal_randstad" private cumangular "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT *, road_sid::text node FROM urbanform.roads_landuse_randstad" interfaces "" "" "" centrality "randstad_private_interfaces_cogtopo"
+18b- 12382.446
+
+R --args "graph.multimodal_randstad" car cumangular "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT *, road_sid::text node FROM urbanform.roads_landuse_randstad" interfaces "" "" "" centrality "randstad_car_interfaces_cogtopo"
+18b- 6213.476
+
+R --args "graph.multimodal_randstad" nonmotor_localtransit cogn_angular_seg "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT *, road_sid::text node FROM urbanform.roads_landuse_randstad" interfaces "" "" "" centrality "randstad_localtransit_interfaces_cogtopo"
+18b- 11603.034
+
+R --args "graph.multimodal_randstad" nonmotor_transit cogn_angular_seg "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT *, road_sid::text node FROM urbanform.roads_landuse_randstad" interfaces "" "" "" centrality "randstad_transit_interfaces_cogtopo"
+18b- 11606.056
+
+R --args "graph.multimodal_randstad" nonmotor cumangular "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "" "" "" "" "" centrality "randstad_nonmotor_cogtopo"
+18b- 8557.311
+
+R --args "graph.multimodal_randstad" private cumangular "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "" "" "" "" "" centrality "randstad_private_cogtopo"
+18b- 9421.514
+
+R --args "graph.multimodal_randstad" car cumangular "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "" "" "" "" "" centrality "randstad_car_cogtopo"
+18b- 4820.612
+
+R --args "graph.multimodal_randstad" nonmotor_localtransit cogn_angular_seg "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "" "" "" "" "" centrality "randstad_localtransit_cogtopo"
+18b- 8477.843
+
+R --args "graph.multimodal_randstad" nonmotor_transit cogn_angular_seg "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "" "" "" "" "" centrality "randstad_transit_cogtopo"
+18b- 6032.998
+
+system.time(source('/Users/jorge/Dropbox/PhD/Thesis_work/code/graphs/super_centrality_v1.8b.R'))
+
+
+----------------------------------
+-- LOCAL ACTIVITY CENTRALITY -- (closeness only)
+R --args "graph.multimodal_randstad" nonmotor cumangular "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, retail FROM urbanform.roads_landuse_randstad WHERE retail IS NOT NULL" retail ",temporal_ped" "" "10" centrality "randstad_nonmotor_retail"
+18b- 11802.522
+
+R --args "graph.multimodal_randstad" nonmotor cumangular "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, work  FROM urbanform.roads_landuse_randstad WHERE work IS NOT NULL" work ",temporal_ped" "" "20" centrality "randstad_nonmotor_work"
+18b- 12466.525
+
+R --args "graph.multimodal_randstad" nonmotor cumangular "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, leisure FROM urbanform.roads_landuse_randstad WHERE leisure IS NOT NULL" leisure ",temporal_ped" "" "15" centrality "randstad_nonmotor_leisure"
+18b- 11809.363
+
+R --args "graph.multimodal_randstad" nonmotor cumangular "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, education FROM urbanform.roads_landuse_randstad WHERE education IS NOT NULL" education ",temporal_ped" "" "10" centrality "randstad_nonmotor_education"
+18b- 11195.002
+
+R --args "graph.multimodal_randstad" nonmotor cumangular "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, (coalesce(retail,0)+coalesce(work,0)+coalesce(leisure,0)+coalesce(education,0)) activity FROM urbanform.roads_landuse_randstad WHERE retail IS NOT NULL OR work IS NOT NULL OR leisure IS NOT NULL OR education IS NOT NULL" activity ",temporal_ped" "" "10" centrality "randstad_nonmotor_activity"
+18b- 13302.209
+
+R --args "graph.multimodal_randstad" private cumangular "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, work FROM urbanform.roads_landuse_randstad WHERE work IS NOT NULL" work ",temporal" "" "20" centrality "randstad_private_work"
+18b- 14096.551
+
+R --args "graph.multimodal_randstad" nonmotor_localtransit cogn_angular_seg "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, work FROM urbanform.roads_landuse_randstad WHERE work IS NOT NULL" work ",temporal_ped" "" "20" centrality "randstad_localtransit_work"
+18b- 12260.931
+
+R --args "graph.multimodal_randstad" nonmotor_transit cogn_angular_seg "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, work FROM urbanform.roads_landuse_randstad WHERE work IS NOT NULL" work ",temporal_bike" "" "20" centrality "randstad_transit_work"
+18b- 12447.019
+
+system.time(source('/Users/jorge/Dropbox/PhD/Thesis_work/code/graphs/super_centrality_v1.8b.R'))
+
+
+----------------------------------
+-- LOCAL ACTIVITY ACCESSIBILITY --
+R --args "graph.multimodal_randstad" nonmotor metric "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, residential_area FROM urbanform.roads_landuse_randstad WHERE residential IS NOT NULL" residential_area ",metric" "" "800" "" "" accessibility "randstad_nonmotor_residential_localaccess"
+19b- 7248.049
+
+R --args "graph.multimodal_randstad" nonmotor metric "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, activity_area FROM urbanform.roads_landuse_randstad WHERE activity IS NOT NULL" activity_area ",metric" "" "800" "" "" accessibility "randstad_nonmotor_activity_localaccess"
+19b- 5823.167
+
+R --args "graph.multimodal_randstad" nonmotor metric "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, work_area FROM urbanform.roads_landuse_randstad WHERE work IS NOT NULL" work_area ",metric" "" "800" "" "" accessibility "randstad_nonmotor_work_localaccess"
+19b- 5380.656
+
+R --args "graph.multimodal_randstad" nonmotor metric "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, education_area FROM urbanform.roads_landuse_randstad WHERE education IS NOT NULL" education_area ",metric" "" "800" "" "" accessibility "randstad_nonmotor_education_localaccess"
+19b- 5278.408
+
+R --args "graph.multimodal_randstad" nonmotor metric "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, residential_area FROM urbanform.roads_landuse_randstad WHERE residential IS NOT NULL" residential_area "" "" "" "" "" accessibility "randstad_nonmotor_residential_globalaccess"
+19b- 6428.889
+
+R --args "graph.multimodal_randstad" nonmotor metric "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, activity_area FROM urbanform.roads_landuse_randstad WHERE activity IS NOT NULL" activity_area "" "" "" "" "" accessibility "randstad_nonmotor_activity_globalaccess"
+19b- 5357.371
+
+R --args "graph.multimodal_randstad" nonmotor metric "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, work_area FROM urbanform.roads_landuse_randstad WHERE work IS NOT NULL" work_area "" "" "" "" "" accessibility "randstad_nonmotor_work_globalaccess"
+19b- 4879.246
+
+R --args "graph.multimodal_randstad" nonmotor metric "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, education_area FROM urbanform.roads_landuse_randstad WHERE education IS NOT NULL" education_area "" "" "" "" "" accessibility "randstad_nonmotor_education_globalaccess"
+19b- 4922.069
+
+R --args "graph.multimodal_randstad" nonmotor temporal_ped "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, activity_area FROM urbanform.roads_landuse_randstad WHERE activity IS NOT NULL" activity_area ",temporal_ped" "" "10,20" "" "" accessibility "randstad_nonmotor_activity_access"
+19b- 6133.639
+
+R --args "graph.multimodal_randstad" car temporal "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, activity_area FROM urbanform.roads_landuse_randstad WHERE activity IS NOT NULL" activity_area ",temporal" "" "10,20" "" "" accessibility "randstad_car_activity_access"
+19b- 3506.501
+
+R --args "graph.multimodal_randstad" nonmotor_localtransit temporal_ped "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, activity_area FROM urbanform.roads_landuse_randstad WHERE activity IS NOT NULL" activity_area ",temporal_ped" "" "10,20" "" "" accessibility "randstad_localtransit_activity_access"
+19b- 6037.089
+
+R --args "graph.multimodal_randstad" nonmotor_transit temporal_bike "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, activity_area FROM urbanform.roads_landuse_randstad WHERE activity IS NOT NULL" activity_area ",temporal_bike" "" "10,20" "" "" accessibility "randstad_transit_activity_access"
+19b- 6061.035
+
+R --args "graph.multimodal_randstad" nonmotor temporal_ped "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, work_area  FROM urbanform.roads_landuse_randstad WHERE work IS NOT NULL" work_area ",temporal_ped" "" "10,20" "" "" accessibility "randstad_nonmotor_work_access"
+19b- 5948.817
+
+R --args "graph.multimodal_randstad" car temporal "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, work_area FROM urbanform.roads_landuse_randstad WHERE work IS NOT NULL" work_area ",temporal" "" "10,20" "" "" accessibility "randstad_car_work_access"
+19b- 3484.068
+
+R --args "graph.multimodal_randstad" nonmotor_localtransit temporal_ped "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, work_area FROM urbanform.roads_landuse_randstad WHERE work IS NOT NULL" work_area ",temporal_ped" "" "10,20" "" "" accessibility "randstad_localtransit_work_access"
+19b- 6105.216
+
+R --args "graph.multimodal_randstad" nonmotor_transit temporal_ped "" "SELECT target_id::text node FROM survey.sampling_roads_interfaces" 0 "" "" "SELECT road_sid::text node, work_area FROM urbanform.roads_landuse_randstad WHERE work IS NOT NULL" work_area ",temporal_bike" "" "10,20" "" "" accessibility "randstad_transit_work_access"
+19b- 8461.452
+
+system.time(source('/Users/jorge/Dropbox/PhD/Thesis_work/code/graphs/super_centrality_v1.9b.R'))
+
+
+---------------------------------
+-- RAIL MULTIMODAL CENTRALITY -- (same(?) as transit and multimodal centrality above but only calculates rail stations closeness)
+R --args "graph.multimodal_randstad" transit cogn_angular_seg "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "" "" ",temporal" "" "10,15,30,45,60" centrality "randstad_rail_transit_topo"
+18b- 18.4
+
+R --args "graph.multimodal_randstad" transit cogn_angular_temp "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "" "" ",temporal" "" "10,15,30,45,60" centrality "randstad_rail_transit_temp"
+18b- 18.0
+
+R --args "graph.multimodal_randstad" multimodal cogn_angular_seg "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "" "" ",temporal" "" "15,30,45,60" centrality "randstad_rail_mm_cogtopo"
+18b- 1935.6
+18b- 692.547 (with R3)
+
+R --args "graph.multimodal_randstad" multimodal cogn_angular_temp "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "" "" ",temporal" "" "15,30,45,60" centrality "randstad_rail_mm_cogtemp"
+18b- 1919.123
+
+R --args "graph.multimodal_randstad" multimodal temporal "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "" "" ",temporal" "" "15,30,45,60" centrality "randstad_rail_mm_temporal"
+18b- 1068.179
+
+R --args "graph.multimodal_randstad" nonmotor_transit cogn_angular_seg "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "" "" ",temporal_ped" "" "5,10,15,20" centrality "randstad_rail_nonmotor_cogtopo"
+18b- 1867.381 
+
+R --args "graph.multimodal_randstad" nonmotor_transit cogn_angular_temp "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "" "" ",temporal_ped" "" "5,10,15,20" centrality "randstad_rail_nonmotor_cogtemp"
+18b- 1782.277
+
+R --args "graph.multimodal_randstad" nonmotor_transit temporal_ped "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "" "" ",temporal_ped" "" "5,10,15,20" centrality "randstad_rail_nonmotor_temporal"
+18b- 1080.283
+
+system.time(source('/Users/jorge/Dropbox/PhD/Thesis_work/code/graphs/super_centrality_v1.8b.R'))
+
+
+---------------------------------
+-- RAIL MULTIMODAL BUILDINGS CENTRALITY -- (calculates rail stations closeness to roads with buildings)
+R --args "graph.multimodal_randstad" nonmotor_transit cogn_angular_seg "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "SELECT road_sid::text node FROM urbanform.roads_landuse_randstad" "" ",temporal_ped" "" "5,10,15,20" centrality "randstad_rail_nonmotor_roads_cogtopo"
+18b- 1746.065
+
+R --args "graph.multimodal_randstad" nonmotor_transit cogn_angular_temp "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "SELECT road_sid::text node FROM urbanform.roads_landuse_randstad" "" ",temporal_ped" "" "5,10,15,20" centrality "randstad_rail_nonmotor_roads_cogtemp"
+18b- 1688.234
+
+R --args "graph.multimodal_randstad" nonmotor_transit temporal_ped "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "SELECT road_sid::text node FROM urbanform.roads_landuse_randstad" "" ",temporal_ped" "" "5,10,15,20" centrality "randstad_rail_nonmotor_roads_temporal"
+18b- 896.794
+
+R --args "graph.multimodal_randstad" multimodal temporal "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "SELECT road_sid::text node FROM urbanform.roads_landuse_randstad" "" ",temporal" "" "5,10,15,20" centrality "randstad_rail_mm_roads_temporal"
+18b- 962.178
+
+R --args "graph.multimodal_randstad" nonmotor_transit cogn_angular_seg "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "SELECT *, road_sid::text node FROM urbanform.roads_landuse_randstad" interfaces ",temporal_ped" "" "5,10,15,20" centrality "randstad_rail_nonmotor_interfaces_cogtopo"
+18b- 2883.042 
+
+R --args "graph.multimodal_randstad" nonmotor_transit cogn_angular_temp "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "SELECT *, road_sid::text node FROM urbanform.roads_landuse_randstad" interfaces ",temporal_ped" "" "5,10,15,20" centrality "randstad_rail_nonmotor_interfaces_cogtemp"
+18b- 2828.482
+
+R --args "graph.multimodal_randstad" nonmotor_transit temporal_ped "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "SELECT *, road_sid::text node FROM urbanform.roads_landuse_randstad" interfaces ",temporal_ped" "" "5,10,15,20" centrality "randstad_rail_nonmotor_interfaces_temporal"
+18b- 2106.633
+
+R --args "graph.multimodal_randstad" nonmotor_transit cogn_angular_seg "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "SELECT *, road_sid::text node FROM urbanform.roads_landuse_randstad" units ",temporal_ped" "" "5,10,15,20" centrality "randstad_rail_nonmotor_units_cogtopo"
+18b- 2810.248
+
+R --args "graph.multimodal_randstad" multimodal cogn_angular_seg "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "SELECT *, road_sid::text node FROM urbanform.roads_landuse_randstad" units ",temporal" "" "5,10,15,20" centrality "randstad_rail_mm_units_cogtopo"
+18b- 2599.172
+
+R --args "graph.multimodal_randstad" nonmotor_transit cogn_angular_temp "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "SELECT *, road_sid::text node FROM urbanform.roads_landuse_randstad" units ",temporal_ped" "" "5,10,15,20" centrality "randstad_rail_nonmotor_units_cogtemp"
+18b- 2798.057
+
+R --args "graph.multimodal_randstad" nonmotor_transit temporal_ped "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "SELECT *, road_sid::text node FROM urbanform.roads_landuse_randstad" units ",temporal_ped" "" "5,10,15,20" centrality "randstad_rail_nonmotor_units_temporal"
+18b- 2103.731
+
+*** R --args "graph.multimodal_randstad" nonmotor_transit cogn_angular_seg "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "SELECT *, road_sid::text node FROM urbanform.roads_landuse_randstad" units_area ",temporal_ped" "" "5,10,15,20" centrality "randstad_rail_nonmotor_unitsarea_cogtopo"
+18b- 2846.246
+
+*** R --args "graph.multimodal_randstad" nonmotor_transit cogn_angular_temp "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "SELECT *, road_sid::text node FROM urbanform.roads_landuse_randstad" units_area ",temporal_ped" "" "5,10,15,20" centrality "randstad_rail_nonmotor_unitsarea_cogtemp"
+18b- 2736.314
+
+*** R --args "graph.multimodal_randstad" nonmotor_transit temporal_ped "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" 0 "" "" "SELECT *, road_sid::text node FROM urbanform.roads_landuse_randstad" units_area ",temporal_ped" "" "5,10,15,20" centrality "randstad_rail_nonmotor_unitsarea_temporal"
+18b- 1834.123
+
+system.time(source('/Users/jorge/Dropbox/PhD/Thesis_work/code/graphs/super_centrality_v1.8b.R'))
+
+
+----------------------------------
+-- AMSTERDAM MULTIMODAL ROUTES --
+
+
+
+
+
+---------------------------------
+-- AMSTERDAM CENTRALITY METRICS TESTS --
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/centrality_metrics_test.R car "metric,temporal,axial+0.000001 axial,cumangular angular,continuity_v2+0.000001 continuity,segment" study_area
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/centrality_metrics_test.R car "metric,temporal,axial+0.000001 axial,cumangular angular,continuity_v2+0.000001 continuity,segment" study_area_buffer
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/centrality_metrics_test.R car "metric,temporal,axial+0.000001 axial,cumangular angular,continuity_v2+0.000001 continuity,segment" analysis_area_centre
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/centrality_metrics_test.R car "metric,temporal,axial+0.000001 axial,cumangular angular,continuity_v2+0.000001 continuity,segment" analysis_area_north
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/centrality_metrics_test.R car "metric,temporal,axial+0.000001 axial,cumangular angular,continuity_v2+0.000001 continuity,segment" analysis_area_east
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/centrality_metrics_test.R nonmotor "metric,temporal_ped,temporal_bike,axial+0.000001 axial,cumangular angular,continuity_v2+0.000001 continuity,segment+0.000001 segment" analysis_area_centre
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/centrality_metrics_test.R private "metric,temporal,axial+0.000001 axial,cumangular angular,continuity_v2+0.000001 continuity,segment+0.000001 segment" analysis_area_centre
+
+
+---------------------------------
+-- AMSTERDAM MULTIMODAL CENTRALITY TESTS --
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/centrality_metrics_test.R all "metric,temporal,cogn_angular_seg,cogn_axial_seg,segment+transfer segment,cogn_angular_mix_seg,cogn_axial_mix_seg" analysis_area_centre
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/centrality_metrics_test.R transit "metric,temporal_ped,temporal_bike,cogn_angular_seg,cogn_axial_seg,segment+transfer segment" analysis_area_centre
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/centrality_metrics_test.R all "cogn_angular_temp,cogn_axial_temp,cogn_angular_mix_temp,cogn_axial_mix_temp" analysis_area_centre
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/centrality_metrics_test.R transit "cogn_angular_temp,cogn_axial_temp,cogn_angular_mix_temp,cogn_axial_mix_temp" analysis_area_centre
+
+
+---------------------------------
+-- AMSTERDAM BUILDINGS CENTRALITY TESTS --
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/buildings_centrality_multimodal.R all cogn_angular_seg study_area_buffer
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/buildings_centrality_multimodal.R car cumangular study_area_buffer
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/buildings_centrality_multimodal.R nonmotor cumangular study_area_buffer
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/buildings_centrality_multimodal.R transit cogn_angular_seg study_area_buffer
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/buildings_centrality_multimodal.R all temporal study_area_buffer
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/buildings_centrality_multimodal.R nonmotor temporal_ped study_area_buffer
+
+Rscript ~/Dropbox/PhD/Thesis_work/code/graphs/buildings_centrality_multimodal.R transit temporal_ped study_area_buffer
+
+
+----------------------------------
+-- AMSTERDAM CENTRALITY WITH RADIUS --
+*** R --args "graph.multimodal_amsterdam" nonmotor cumangular "" 10 "" "" "" "" ",metric" "" "800,1600,2400,3200" centrality "amsterdam_radius_nonmotor"
+15b - 718056.4
+17b - 510100.6 warnings
+19b - 
+
+*** R --args "graph.multimodal_amsterdam" private cumangular "" 10 "" "" "" "" ",metric" "" "800,1600,2400,3200" centrality "amsterdam_radius_private"
+15b - 752711.6
+17b - 590241.2 warnings
+19b -
+
+*** R --args "graph.multimodal_amsterdam" nonmotor metric "" 10 "" "" "" "" ",metric" "" "400,800,2400,3200" centrality "amsterdam_radius_nonmotor_metric"
+19b -
+
+*** R --args "graph.multimodal_amsterdam" nonmotor_transit cogn_angular_seg "" 10 "" "" "" "" ",temporal_ped" "" "5,10,15,20,30" centrality "amsterdam_radius_transit"
+15b - 1024586.2
+17b - 821605.8 warnings
+19b -
+
+*** R --args "graph.multimodal_amsterdam" multimodal cogn_angular_seg "" 10 "" "" "" "" ",temporal" "" "5,10,15,20,30" centrality "amsterdam_radius_multimodal"
+15b - 1410238.2
+17b - 1457165.9 warnings
+19b -
+
+system.time(source('/Users/jorge/Dropbox/PhD/Thesis_work/code/graphs/super_centrality_v1.9b.R'))
+
+
+----------------------------------
+-- AMSTERDAM CENTRALITY / ACCESSIBILITY OF SEGMENTS WITH BUILDINGS --
+R --args "graph.multimodal_amsterdam" nonmotor cumangular "" 10 "urbanform.roads_landuse_amsterdam" "" "urbanform.roads_landuse_amsterdam" "" "" "" "" centrality "amsterdam_landuse_nonmotor"
+15b - 231740.02 
+
+R --args "graph.multimodal_amsterdam" private cumangular "" 10 "urbanform.roads_landuse_amsterdam" "" "urbanform.roads_landuse_amsterdam" "" "" "" "" centrality "amsterdam_landuse_private"
+15b - 242426.07
+
+R --args "graph.multimodal_amsterdam" private cumangular "" 10 "urbanform.roads_landuse_amsterdam" interfaces "urbanform.roads_landuse_amsterdam" interfaces "" "" "" centrality "amsterdam_landuse_private_interfaces"
+15b - 529523.3
+
+R --args "graph.multimodal_amsterdam" private cumangular "" 10 "urbanform.roads_landuse_amsterdam" units "urbanform.roads_landuse_amsterdam" units "" "" "" centrality "amsterdam_landuse_private_units"
+15b - 546323.6
+
+*** R --args "graph.multimodal_amsterdam" private cumangular "" 10 "SELECT * FROM urbanform.roads_landuse_amsterdam" units_area "SELECT * FROM urbanform.roads_landuse_amsterdam" units_area "" "" "" centrality "amsterdam_landuse_private_units_area"
+18b - 
+
+system.time(source('/Users/jorge/Dropbox/PhD/Thesis_work/code/graphs/super_centrality_v1.8b.R'))
+
+
+----------------------------------
+-- AMSTERDAM MULTIMODAL CENTRALITY / ACCESSIBILITY OF SEGMENTS WITH BUILDINGS --
+R --args "graph.multimodal_amsterdam" nonmotor_transit cogn_angular_seg "" 10 "urbanform.roads_landuse_amsterdam" units "urbanform.roads_landuse_amsterdam" units ",temporal_ped" "" "5,10,15,20,30" centrality "amsterdam_landuse_nonmotortransit"
+15b - 1031097.2
+15b - 1035076.1
+17b - 480015.9
+
+R --args "graph.multimodal_amsterdam" multimodal cogn_angular_seg "" 10 "urbanform.roads_landuse_amsterdam" units "urbanform.roads_landuse_amsterdam" units ",temporal" "" "5,10,15,20,30" centrality "amsterdam_landuse_multimodal"
+16b - 334300.3
+17b - 759661.9
+
+R --args "graph.multimodal_amsterdam" nonmotor_transit cogn_angular_seg "" 10 "" "" "SELECT * FROM urbanform.roads_landuse_amsterdam" "" "" "" "" centrality "amsterdam_landuse_nonmotortransit"
+18b - 137928.41
+
+R --args "graph.multimodal_amsterdam" nonmotor_transit cogn_angular_seg "" 10 "" "" "SELECT * FROM urbanform.roads_landuse_amsterdam" interfaces "" "" "" centrality "amsterdam_interfaces_nonmotortransit"
+18b - 301510.4
+
+R --args "graph.multimodal_amsterdam" nonmotor_transit cogn_angular_seg "" 10 "" "" "SELECT * FROM urbanform.roads_landuse_amsterdam" units "" "" "" centrality "amsterdam_units_nonmotortransit"
+18b - 301372.88
+
+R --args "graph.multimodal_amsterdam" nonmotor_transit temporal_ped "" 10 "" "" "SELECT * FROM urbanform.roads_landuse_amsterdam" "" "" "" "" centrality "amsterdam_landuse_nonmotortransit_temp"
+18b - 294518.38
+
+R --args "graph.multimodal_amsterdam" nonmotor_transit temporal_ped "" 10 "" "" "SELECT * FROM urbanform.roads_landuse_amsterdam" interfaces "" "" "" centrality "amsterdam_interfaces_nonmotortransit_temp"
+18b - 302728.90
+
+R --args "graph.multimodal_amsterdam" nonmotor_transit temporal_ped "" 10 "" "" "SELECT * FROM urbanform.roads_landuse_amsterdam" units "" "" "" centrality "amsterdam_units_nonmotortransit_temp"
+18b - 302893.70
+
+system.time(source('/Users/jorge/Dropbox/PhD/Thesis_work/code/graphs/super_centrality_v1.8b.R'))
+
+	
+----------------------------------
+-- AMSTERDAM MULTIMODAL ACCESSIBILITY (CENTRALITY OF HOMES TO ACTIVITIES) --
+R --args "graph.multimodal_amsterdam" nonmotor_transit cogn_angular_seg "" 10 "urbanform.roads_landuse_amsterdam WHERE residential IS NOT NULL" residential "urbanform.roads_landuse_amsterdam WHERE retail IS NOT NULL" retail ",temporal_ped" "" "5,10,15" centrality "amsterdam_retail_nonmotortransit"
+263901.42
+
+R --args "graph.multimodal_amsterdam" multimodal cogn_angular_seg "" 10 "urbanform.roads_landuse_amsterdam WHERE residential IS NOT NULL" residential "urbanform.roads_landuse_amsterdam WHERE retail IS NOT NULL" retail ",temporal" "15" "30" centrality "amsterdam_retail_multimodal"
+218296.0
+
+R --args "graph.multimodal_amsterdam" nonmotor_transit cogn_angular_seg "" 10 "urbanform.roads_landuse_amsterdam WHERE residential IS NOT NULL" residential "urbanform.roads_landuse_amsterdam WHERE education IS NOT NULL" education ",temporal_ped" "" "10,15,20" centrality "amsterdam_education_nonmotortransit"
+192324.03
+
+R --args "graph.multimodal_amsterdam" multimodal cogn_angular_seg "" 10 "urbanform.roads_landuse_amsterdam WHERE residential IS NOT NULL" residential "urbanform.roads_landuse_amsterdam WHERE education IS NOT NULL" education ",temporal" "15" "30" centrality "amsterdam_education_multimodal"
+15b - 133276.23
+16b - 93839.75
+
+R --args "graph.multimodal_amsterdam" nonmotor_transit cogn_angular_seg "" 10 "urbanform.roads_landuse_amsterdam WHERE residential IS NOT NULL" residential "urbanform.roads_landuse_amsterdam WHERE work IS NOT NULL" work ",temporal_ped" "" "15,20,30" centrality "amsterdam_work_nonmotortransit"
+327770.35
+
+R --args "graph.multimodal_amsterdam" multimodal cogn_angular_seg "" 10 "urbanform.roads_landuse_amsterdam WHERE residential IS NOT NULL" residential "urbanform.roads_landuse_amsterdam WHERE work IS NOT NULL" work ",temporal" "15" "30" centrality "amsterdam_work_multimodal"
+222427.56
+
+system.time(source('/Users/jorge/Dropbox/PhD/Thesis_work/code/graphs/super_centrality_v1.5b.R'))
+
+
+----------------------------------
+-- AMSTERDAM MULTIMODAL ACCESSIBILITY TO TRANSIT --
+
+R --args "graph.multimodal_amsterdam" nonmotor_transit cogn_angular_seg "" 0 "" "" "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" "" ",metric" "" "400,800,2400,3200" centrality "amsterdam_transit_rail"
+18b - 50463.845
+
+R --args "graph.multimodal_amsterdam" nonmotor cumangular "" 0 "" "" "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='rail'" "" ",metric" "" "400,800,2400,3200" centrality "amsterdam_transit_nonmotor_rail"
+18b - 60005.515
+
+R --args "graph.multimodal_amsterdam" nonmotor_transit cogn_angular_seg "" 0 "" "" "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='tram'" "" ",metric" "" "400,800,2400,3200" centrality "amsterdam_transit_tram"
+18b - 60385.596
+
+R --args "graph.multimodal_amsterdam" nonmotor_transit cogn_angular_seg "" 0 "" "" "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='metro'" "" ",metric" "" "400,800,2400,3200" centrality "amsterdam_transit_metro"
+18b - 61242.778
+
+R --args "graph.multimodal_amsterdam" nonmotor_transit cogn_angular_seg "" 0 "" "" "SELECT multimodal_sid::text node FROM network.transit_stops WHERE network='bus'" "" ",metric" "" "400,800,2400,3200" centrality "amsterdam_transit_bus"
+18b - 62019.885
+
+system.time(source('/Users/jorge/Dropbox/PhD/Thesis_work/code/graphs/super_centrality_v1.8b.R'))
+
+
+----------------------------------
+-- LOCAL CENTRALITY PROTO --
+R --args car "metric,cumangular angular,temporal,axial+0.000001 axial,continuity_v2+0.000001 continuity,segment"
+source('~/Dropbox/PhD/Thesis_work/code/modality_environment/local_centrality_private.R')
+
+R --args nonmotor "metric,cumangular angular,temporal,axial+0.000001 axial,continuity_v2+0.000001 continuity,segment"
+source('~/Dropbox/PhD/Thesis_work/code/modality_environment/local_centrality_private.R')
+
+
+----------------------------------
+-- REGIONAL ACCESSIBILITY
+R --args bicycle metric 400 metric "2400,3600,7500,7500,5000,5000" "retail,education,office,industry,assembly,sports" metric 400
+
+R --args motorway metric 3200 metric "10000,15000,30000,30000,20000,20000" "retail,education,office,industry,assembly,sports" metric 1600
+
+R --args main metric 1600 metric "6400,10000,20000,20000,13000,13000" "retail,education,office,industry,assembly,sports" metric 1600
+
+R --args rail metric 1600 metric "12000,19000,38000,38000,24000,24000" "retail,education,office,industry,assembly,sports" metric 800
+
+R --args tram metric 400 metric "4400,6600,13000,13000,8800,8800" "retail,education,office,industry,assembly,sports" metric 400
+
+R --args metro metric 800 metric "4400,6600,13000,13000,8800,8800" "retail,education,office,industry,assembly,sports" metric 800
+
+R --args bus metric 400 metric "5500,8000,16000,16000,13000,13000" "retail,education,office,industry,assembly,sports" metric 400
+
+source('~/Dropbox/PhD/Thesis_work/code/modality_environment/regional_accessibility.R')
